@@ -31,3 +31,24 @@ h3{
 p{
     padding: 5px 10;
 }
+
+label{
+    font-size: 0.75em;
+    font-weight: bold;
+    margin: 10px 0px 0px 0px;
+    display: block;
+    width: 300px;
+}
+
+input, select{
+    padding: 5px;
+    margin: 2px 0px;
+    font-size: 1.0em;
+    display: block;
+}
+
+button{
+    font-size: 1.0em;
+    padding: 3px 20px;
+    margin: 5px 0px;
+}
