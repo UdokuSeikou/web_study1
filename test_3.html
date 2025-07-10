@@ -10,7 +10,12 @@
         <div class="container">
             <p>
                 <script>
-                    document.write("これはJSによる表示です");
+                    let price = 1235000;
+                    let tax0 = 0.08;
+                    let tax1 = 0.1;
+                    document.write("金額：" + price + "<br>");
+                    document.write("軽減税率適用：" + price * (1.0 + tax0) + "円<br>");
+                    document.write("通常の税率：" + price * (1.0 + tax1) + "円<br>");
                 </script>
             </p>
         </div>

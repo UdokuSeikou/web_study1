@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>Script!</title>
+        <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+        <h1>Hello!</h1>
+        <div class="container">
+            <p>
+                <script>
+                    let keisan = {
+                        data:[123, 45, 67, 89, 10],
+                        calc:function(){
+                            let total = 0;
+                            for(let n in this.data){
+                                total += this.data[n];
+                            }
+                            return total;
+                        },
+                        report:function(){
+                            document.write('Data: ' + this.data + '<br>');
+                            document.write('total: ' + this.calc())
+                        }
+                    }
+                    keisan.report();
+                </script>
+            </p>
+        </div>
+    </body>
+</html>
