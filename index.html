@@ -3,30 +3,32 @@
     <head>
         <meta charset="UTF-8">
         <title>Hello!</title>
+        <link rel="stylesheet" href="./styles.css">
     </head>
     <body>
-        <h1>Hello</h1>
-        <p>これはサンプルページですそして<br>これで改行ができます</p>
-        <hr>あるいは<hr />
-        <p>別の段落と改行は表示が違う様子ですね</p>
+        <h1>Hello!</h1>
+        <div class="container">
+            <p id="msg">Enter your name & password:!</p>
+            <label for="f1">Name</label>
+            <input type="text" id="f1">
+            <label for="f2">Password</label>
+            <input type="password" id="f2">
+            <button onclick="action(event)">
+                Click! 
+            </button>
 
-        <pre>
-            preタグを使えば、改行コードを
-            そのままページに反映できます
-        </pre>
-
-        <a href="https://google.com">これはGoogleのページです</a>
-
-        <p>これはulによるリスト</p>
-        <ul>
-            <li>項目1</li>
-            <li>項目2</li>
-        </ul>
-        <p>これはolによるリスト</p>
-        <ol>
-            <li>項目1</li>
-            <li>項目2</li>
-        </ol>
-        
+            <script>
+                function action(event){
+                    let f1 = document.querySelector("#f1");
+                    let f2 = document.querySelector("#f2");
+                    let result = "Your name: " + f1.value + "<br>" + "Password:(" + f2.value.length + "chars)";
+                    let msg = document.querySelector("#msg");
+                    
+                    msg.innerHTML = result;
+                }
+            </script>
+        </div>
     </body>
 </html>
+
+<!--<form>はフォームの内容をサーバーに送信するときに使う-->
