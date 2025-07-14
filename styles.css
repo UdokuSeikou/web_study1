@@ -52,3 +52,39 @@ button{
     padding: 3px 20px;
     margin: 5px 0px;
 }
+
+.none{
+    background-color: #fafafc;
+    padding: 25px 50px;
+    margin: 25px 0px;
+}
+
+.alert{
+    color: white;
+    background-color: royalblue;
+    border: white 6px double;
+    padding: 25px 50px;
+    margin: 25px 0px;
+    border-radius: 0.5em;
+}
+
+.alert .title{
+    margin: 10px 0px;
+    padding: 10px 0px;
+    font-size: 1.0em;
+    font-weight: bold;
+}
+
+.card{
+    border: gray 1px solid;
+    padding: 25px 50px;
+    margin: 25px 0px;
+    box-shadow: 5px 7px 5px darkgray;
+}
+
+.card .title{
+    margin: 10px 0px;
+    padding: 10px 0px;
+    font-size: 1.0em;
+    font-weight: bold;
+}

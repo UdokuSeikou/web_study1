@@ -27,6 +27,48 @@
                     msg.innerHTML = result;
                 }
             </script>
+
+            <p id="msg2">Set size & family</p>
+            <label for="f3">Size</label>
+            <input type="range" id="f3" min="10" max="100" class="form-control-range">
+            <label for="f4">Font family</label>
+            <select  id="f4" class="form-control-range">
+                <option >Serif</option>
+                <option >Sans-Serif</option>
+                <option >Monospace</option>
+            </select>
+            <button onclick="action(event)" class="btn btn-primary">
+                Click!
+            </button>
+            <script>
+                function action(event){
+                    let f3 = document.querySelector('#f3');
+                    let f4 = document.querySelector('#f4');
+                    let msg2 = document.querySelector('#msg2');
+                    msg2.style.fontFamily = f4.value;
+                    msg2.style.fontSize = f3.value + 'px';
+                    let result = f4.value + '(' + f3.value + 'px)';
+                    msg2.innerHTML = result;
+                }
+            </script>
+
+            <p id="msg3">Select style-class</p>
+            <label for="list">class</label>
+            <select id="list" class="form-control" onclick="action()">
+                <option >none</option>
+                <option >alert</option>
+                <option >card</option>
+            </select>
+            <script>
+                function action(){
+                    let list = document.querySelector('#list');
+                    let msg3 = document.querySelector('#msg3');
+                    msg3.className = '';
+                    msg3.classList.add(list.value);
+                    msg3.textContent = 'スタイルクラスは "' + list.value + '"に設定されています';
+                }
+                action()
+            </script>
         </div>
     </body>
 </html>
