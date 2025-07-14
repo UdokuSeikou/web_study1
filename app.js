@@ -1,11 +1,8 @@
-const readline = require('readline');
+const { prompt } = require('./mymodule');
 
-const read = readline.createInterface({
-        input:process.stdin,
-        output:process.stdout
-});
+async function main() {
+    const name = await prompt('あなたの名前は？');
+    console.log(`こんにちは、${name}さん！`);
+}
 
-read.question('type any words: ', (answer) => {
-    read.write('you typed:' + answer);
-    read.close();
-});
+main()
