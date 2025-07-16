@@ -37,8 +37,8 @@ async function add() {
     let bf = await prompt('type message: ');
     let msg = bf.toString('urf8');
     let item = {
-        date: new Data(),
-        message: msg
+        date : new Date(),
+        message : msg
     }
     data.unshift(item);
     console.log('message added.');
