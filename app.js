@@ -46,12 +46,12 @@ async function add() {
 
 //メッセージの削除
 async function del() {
-    let bf = await prompt('type number: ');
-    let num = +bf.toString();
-    console.log('item: ' + data[num].message);
     for (let key in data){
         console.log( key + ':' + data[key].message);
     }
+    let bf = await prompt('type number: ');
+    let num = +bf.toString();
+    console.log('item: ' + data[num].message);
     bf = await prompt('delete it? (y/n): ');
     if (bf.toString() == 'y'){
         data.splice(num, 1);
