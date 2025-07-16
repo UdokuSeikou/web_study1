@@ -41,6 +41,7 @@ async function add() {
         message : msg
     }
     data.unshift(item);
+    reflect_data();
     console.log('message added.');
 }
 
@@ -55,6 +56,7 @@ async function del() {
     bf = await prompt('delete it? (y/n): ');
     if (bf.toString() == 'y'){
         data.splice(num, 1);
+        reflect_data();
     }
 }
 
@@ -72,14 +74,18 @@ async function find() {
 //終了
 async function quit() {
     flg = false;
+    reflect_data();
+    console.log('quit now!')
+}
+
+function reflect_data() {
     let opt = {encoding:'utf8'}
     fs.writeFile ( fname, JSON.stringify(data, '', 2), opt, (err) => {
         if (err){
             console.error(error.message);
             return;
         }
-        console.log('quit now!')
-    })
+    });
 }
 
 main();
