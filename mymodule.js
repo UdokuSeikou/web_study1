@@ -8,7 +8,7 @@ function prompt(msg){
             output:process.stdout
     });
 
-    return new Promise((resolve, rejects) => {
+    return new Promise((resolve, reject) => {
         read.question(msg, (answer) => {
             resolve(answer);
             read.close();
