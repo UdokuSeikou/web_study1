@@ -1,15 +1,15 @@
+const { error } = require('console');
 const fs = require('fs');
-const { prompt } = require('./mymodule');
  
 async function main() {
-    const msg = await prompt('please type: ');
-    try {
-        fs.writeFileSync('./data.txt', msg);
-        console.log('save data.txt to write: ');
-        console.log(msg);
-    } catch (e) {
-        console.error(e.message);
-    }
+    fs.readFile('./data.txt', (err, data) =>{
+        if (err) {
+            console.error(err.message);
+            return;
+        }
+        console.log('data.textの中身: ');
+        console.log(data.toString())
+    })
 }
 
 main();
