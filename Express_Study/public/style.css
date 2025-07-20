@@ -5,7 +5,37 @@ h1{
 div.first{
     color: white;
     background-color: black;
-    text-align: center;
-    height: 100px;
+    height: 200px;
     margin: 0px 50px 0px;
+    padding: 2em;
+}
+
+div.inpform{
+    width: 15em;
+    height: 3em;
+    border: 1px solid grey;
+    padding: 1em;
+}
+
+label{
+    display: block;
+    font-size: 0.9em;
+    font-weight: bold;
+    text-align: left;
+    margin-left: 1.5em;
+    margin-bottom: 0.2em;
+}
+
+input{
+    display: block;
+    width: 15em;
+    height: 1.2em;
+    margin-left: 1.5em;
+}
+
+div.button{
+    width: 17em;
+    height: 3em;
+    text-align: right;
+    padding-top: 0.4em;
 }

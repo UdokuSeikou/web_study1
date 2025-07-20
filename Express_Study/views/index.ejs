@@ -7,9 +7,21 @@
     <title><%=title %></title>
 </head>
     <body>
-        <h1><%=title %></h1>
+        <h1><%=message %></h1>
         <div class="first">
-            <p><%=message %></p>
+            <form action="/" method="post">
+                <div class="inpform">
+                    <label for="username">Name</label>
+                    <input type="text" id="username" name="username" placeholder="UserName">
+                </div>
+                <div class="inpform">
+                    <label for="pass">Password</label>
+                    <input type="password" id="pass" name="pass" placeholder="Password">
+                </div>
+                <div class="button">
+                    <button type="submit">送信</button>
+                </div>
+            </form>
         </div>
     </body>
 </html>
