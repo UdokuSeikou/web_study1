@@ -7,21 +7,20 @@
     <title><%=title %></title>
 </head>
     <body>
-        <h1><%=message %></h1>
+        <h1><%=title %></h1>
         <div class="first">
             <form action="/" method="post">
-                <div class="inpform">
-                    <label for="username">Name</label>
-                    <input type="text" id="username" name="username" placeholder="UserName">
-                </div>
-                <div class="inpform">
-                    <label for="pass">Password</label>
-                    <input type="password" id="pass" name="pass" placeholder="Password">
-                </div>
-                <div class="button">
-                    <button type="submit">送信</button>
-                </div>
+                <label for="msg">Message:</label>
+                <input type="text" id="msg" name="msg" style="width: 100%;">
+                <button type="submit">送信</button>
             </form>
         </div>
+        <hr>
+            <h2>※メッセージリスト</h2>
+            <ol>
+                <% for(let item of data){ %>
+                    <li><%=item %></li>
+                <% } %>
+            </ol>
     </body>
 </html>
