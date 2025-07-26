@@ -39,3 +39,29 @@ div.button{
     text-align: right;
     padding-top: 0.4em;
 }
+
+div.container{
+    width: 100%;
+    background-color: skyblue;
+}
+
+div.card{
+    width: 600px;
+    height: 300px;
+    border: grey 1px solid;
+    background-color: white;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 10px 5px 5px grey;
+}
+
+th{
+    background-color: darkblue;
+    color: white;
+}
+
+td{
+    background-color: aliceblue;
+    color: darkblue;
+    padding: 0px 20px;
+}

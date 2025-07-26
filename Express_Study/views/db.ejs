@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=title %></title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <h1><%=title %></h1>
+    <div class="container">
+        <div class="card">
+            <h2>※PersonalDataのレコード</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>名前</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% data.forEach(function(row) { %>
+                        <tr>
+                            <td><%= row.id %></td>
+                            <td><%= row.name %></td>
+                            <td><%= row.email %></td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
