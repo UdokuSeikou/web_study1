@@ -33,4 +33,16 @@ router.get('/:id', async function(req, res) {
     }
 });
 
+router.post('/add', async function(req, res) {
+    const name = req.body.name;
+    const email = req.body.email;
+
+    const db = await openDB();
+    const result = await db.run('INSERT INTO personaldata (name, email) VALUES (?, ?)', name, email);
+    
+    res.json({
+        result:result
+    });
+});
+
 module.exports = router;

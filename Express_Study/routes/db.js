@@ -21,4 +21,12 @@ router.get('/row', async function(req, res) {
     res.render('row', opt);
 });
 
+router.get('/add', async function(req, res) {
+    let opt = {
+        title: "SQLite3",
+        message: "レコードを追加",
+    };
+    res.render('add', opt);
+});
+
 module.exports = router;

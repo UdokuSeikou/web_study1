@@ -15,3 +15,14 @@ async function showPersonalDataById(target,id) {
     }
     target.innerHTML = html;
 }
+
+async function addPersonalData(data) {
+    const response = await fetch('/api/add', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
+    return await response.json();
+}

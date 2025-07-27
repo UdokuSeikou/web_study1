@@ -13,6 +13,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 //URLエンコーディングの設定
 app.use(express.urlencoded({extended: false}));
 
+// JSONボディパーサーを追加
+app.use(express.json());
+
 //セッションの設定
 app.use(session({
     secret: 'my secret',

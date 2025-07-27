@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=title %></title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/script.js"></script>
+</head>
+
+<body>
+    <h1><%=title %></h1>
+    <div class="container">
+        <div class="card">
+            <p class="title"><%=message %></p>
+            <label for="name">名前</label>
+            <input type="text" id="name" name="name" placeholder="名前を入力">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="メールアドレスを入力">
+            <button onclick="doAction();">登録</button>
+            
+        </div>
+    </div>
+    <script>
+        function doAction() {
+            const name = document.querySelector("#name");
+            const email = document.querySelector("#email");
+            const data = {
+                name: name.value,
+                email: email.value
+            };
+            addPersonalData(data).then(res =>{
+                const message = document.querySelector(".title");
+                message.textContent = `レコードを追加しました。
+                    (ID=${res.result.lastID})`
+            });
+        }
+    </script>
+    <a href="../">indexへ</a>
+    <a href="../db/row">rowへ</a>
+</body>
+</html>
