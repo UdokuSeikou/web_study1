@@ -1,9 +1,11 @@
 const sqlite3 = require('sqlite3');
 const { open } = require('sqlite');
 const express = require('express');
+const { route } = require('./db');
+
 const router = express.Router();
 
-//SQLite3のデータベースに接続する関数
+// SQLite3のデータベースに接続する関数
 async function openDB() {
     return await open({
         filename: './data.sqlite3',
@@ -11,13 +13,12 @@ async function openDB() {
     });
 }
 
-//ルートハンドラ
 router.get('/', async function(req, res) {
-        let opt = {
-            title: "SQLite3",
-            message: "PersonalDataの内容を表示",
-        };
-        res.render('db', opt);
+    const db = await openDB();
+    const data = await db.all('SELECT * FROM personaldata');
+    res.json({
+        rows: data
+    });
 });
 
 module.exports = router;

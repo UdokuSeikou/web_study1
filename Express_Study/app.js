@@ -31,6 +31,11 @@ app.use('/', indexRouter);
 const dbRouter = require('./routes/db');
 app.use('/db', dbRouter);
 
+// http://localhost:3000/apiにアクセスしたときのルートハンドラ
+// ./routes/apiにつなげる
+const apiRouter = require('./routes/api');
+app.use('/api', apiRouter);
+
 //サーバーを起動
 app.listen(3000, ()=>{
     console.log('Server up http://localhost:3000/');
