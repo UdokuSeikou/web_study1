@@ -1,16 +1,16 @@
-async function getPersonalData() {
-    const response = await fetch('/api');
+async function getPersonalDataById(id) {
+    const response = await fetch('/api/'+id);
     return await response.json();
 }
 
-async function showPersonalData(target) {
-    const data = await getPersonalData();
+async function showPersonalDataById(target,id) {
+    const data = await getPersonalDataById(id);
     let html = '';
-    for (let row of data.rows) {
+    if(data.row) {
         html += `<tr>
-                    <td>${row.id}</td>
-                    <td>${row.name}</td>
-                    <td>${row.email}</td>
+                    <td>${data.row.id}</td>
+                    <td>${data.row.name}</td>
+                    <td>${data.row.email}</td>
                 </tr>`;
     }
     target.innerHTML = html;

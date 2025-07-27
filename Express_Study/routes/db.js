@@ -3,14 +3,6 @@ const { open } = require('sqlite');
 const express = require('express');
 const router = express.Router();
 
-//SQLite3のデータベースに接続する関数
-async function openDB() {
-    return await open({
-        filename: './data.sqlite3',
-        driver: sqlite3.Database
-    });
-}
-
 //ルートハンドラ
 router.get('/', async function(req, res) {
         let opt = {
@@ -18,6 +10,15 @@ router.get('/', async function(req, res) {
             message: "PersonalDataの内容を表示",
         };
         res.render('db', opt);
+});
+
+// ./rowにアクセスしたときのルートハンドラ
+router.get('/row', async function(req, res) {
+    let opt = {
+        title: "SQLite3",
+        message: "レコードを表示",
+    };
+    res.render('row', opt);
 });
 
 module.exports = router;
