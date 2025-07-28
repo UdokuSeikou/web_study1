@@ -12,33 +12,47 @@
     <h1><%=title %></h1>
     <div class="container">
         <div class="card">
-            <p class="title"><%=message %></p>
+            <p class="title" id="message"><%=message %></p>
+            <label for="id">ID</label>
+            <input type="number" id="id" name="id" onchange="doChange(this.value)">
+
             <label for="name">名前</label>
             <input type="text" id="name" name="name" placeholder="名前を入力">
+
             <label for="email">Email</label>
             <input type="email" id="email" name="email" placeholder="メールアドレスを入力">
-            <button onclick="doAction();">登録</button>
+            <button onclick="doAction();">更新</button>
             
         </div>
     </div>
     <script>
+        const message = document.querySelector("#message");
+        const id = document.querySelector("#id");
+        const name = document.querySelector("#name");
+        const email = document.querySelector("#email");
+
+        function doChange(id) {
+            getPersonalDataById(id).then(res => {
+                name.value = res.row.name;
+                email.value = res.row.email;
+                message.textContent = `ID ${id} のレコードを編集します`;
+            })
+        }
+
         function doAction() {
-            const name = document.querySelector("#name");
-            const email = document.querySelector("#email");
             const data = {
+                id: id.value,
                 name: name.value,
                 email: email.value
             };
-            addPersonalData(data).then(res =>{
-                const message = document.querySelector(".title");
-                message.textContent = `レコードを追加しました。
-                    (ID=${res.result.lastID})`
+            updatePersonalData(data).then(res =>{
+                message.textContent = `${res.result.changes}件のレコードを更新しました。`;
             });
         }
     </script>
     <a href="../">indexへ</a>
     <a href="../db/row">rowへ</a>
-    <a href="../db/edit">editへ</a>
+    <a href="../db/add">addへ</a>
     <a href="../db/delete">deleteへ</a>
 </body>
 </html>

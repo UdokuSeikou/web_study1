@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=title %></title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/script.js"></script>
+</head>
+
+<body>
+    <h1><%=title %></h1>
+    <div class="container">
+        <div class="card">
+            <p class="title" id="message"><%=message %></p>
+            <label for="id">ID</label>
+            <input type="number" id="id" name="id" onchange="doChange(this.value)">
+            <pre id="row"></pre>
+            <button onclick="doAction();">削除</button>
+            
+        </div>
+    </div>
+    <script>
+        const message = document.querySelector("#message");
+        const id = document.querySelector("#id");
+        const row = document.querySelector("#row");
+
+        function doChange(id) {
+            getPersonalDataById(id).then(res => {
+                const data = `NAME: ${res.row.name}\nEMAIL: ${res.row.email}`;
+                message.textContent = `ID ${id} のレコードを編集します`;
+                row.textContent = data;
+            })
+        }
+
+        function doAction() {
+            const data = {
+                id: id.value,
+            };
+            deletePersonalData(data).then(res =>{
+                console.log(res.result);
+                message.textContent = `${res.result.changes}件のレコードを削除しました。`;
+            });
+        }
+    </script>
+    <a href="../">indexへ</a>
+    <a href="../db/row">rowへ</a>
+    <a href="../db/add">addへ</a>
+    <a href="../db/edit">editへ</a>
+</body>
+</html>

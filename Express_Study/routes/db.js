@@ -12,7 +12,7 @@ router.get('/', async function(req, res) {
         res.render('db', opt);
 });
 
-// ./rowにアクセスしたときのルートハンドラ
+// /rowにアクセスしたときのルートハンドラ
 router.get('/row', async function(req, res) {
     let opt = {
         title: "SQLite3",
@@ -21,12 +21,31 @@ router.get('/row', async function(req, res) {
     res.render('row', opt);
 });
 
+// /addにアクセスしたときのルートハンドラ
 router.get('/add', async function(req, res) {
     let opt = {
         title: "SQLite3",
         message: "レコードを追加",
     };
     res.render('add', opt);
+});
+
+// /editにアクセスしたときのルートハンドラ
+router.get('/edit', async function(req, res) {
+    let opt = {
+        title: "SQLite3",
+        message: "レコードを編集",
+    };
+    res.render('edit', opt);
+});
+
+// /deleteにアクセスしたときのルートハンドラ
+router.get('/delete', async function (req, res) {
+    let opt = {
+        title: "SQLite3",
+        message: "レコードを削除",
+    };
+    res.render('delete', opt);
 });
 
 module.exports = router;

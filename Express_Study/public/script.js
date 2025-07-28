@@ -26,3 +26,25 @@ async function addPersonalData(data) {
     });
     return await response.json();
 }
+
+async function updatePersonalData(data) {
+    const response = await fetch('/api/edit', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
+    return await response.json();
+}
+
+async function deletePersonalData(data) {
+    const response = await fetch('/api/delete', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
+    return await response.json();
+}

@@ -45,4 +45,26 @@ router.post('/add', async function(req, res) {
     });
 });
 
+router.post('/edit', async (req, res) => {
+    let id = req.body.id;
+    let name = req.body.name;
+    let email = req.body.email;
+    const db = await openDB();
+    let sql = 'UPDATE personaldata SET name = ?, email = ? WHERE id = ?';
+    let result = await db.run(sql, name, email, id);
+    res.json({
+        result: result
+    });
+});
+
+router.post('/delete', async (req, res) => {
+    let id = req.body.id;
+    const db = await openDB();
+    let sql = 'DELETE FROM personaldata WHERE id = ?';
+    const result = await db.run(sql, id);
+    res.json({
+        result: result
+    });
+});
+
 module.exports = router;
