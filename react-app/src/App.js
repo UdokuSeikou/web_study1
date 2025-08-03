@@ -1,22 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
 
+function Title(props)  {
+  return <h1>{props.content}</h1>;
+}
+
+function Message(props) {
+  return <p>{props.content}</p>;
+}
+
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Title content="タイトルです"/>
+        <Message content="1つ目のメッセージ"/>
+        <Message content="別のメッセージ"/>
       </header>
     </div>
   );
