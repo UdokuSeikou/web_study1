@@ -46,3 +46,13 @@ div.card{
     margin: 20px;
     box-shadow: 10px 5px 5px grey;
 }
+
+button {
+  background-color: royalblue;
+  color: white;
+  border: none;
+  border-radius: 0.5em;
+  padding: 0.5em 1em;
+  margin: 1em 1em 1em 1em;
+  cursor: pointer;
+}

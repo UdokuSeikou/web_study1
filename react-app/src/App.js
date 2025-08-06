@@ -1,45 +1,26 @@
 import logo from './logo.svg';
 import './App.css';
-
-function Title(props)  {
-  return <h1>{props.content}</h1>;
-}
-
-function Message(props) {
-  return <p>{props.content}</p>;
-}
-
-function Alert(props) {
-  return (
-    <div className='alert'>
-      <h2>{props.title}</h2>
-      <p>{props.content}</p>
-    </div>
-  )
-}
-
-function Card(props) {
-  return (
-    <div className='card'>
-      <Title content={props.title} />
-      <Message content={props.content} />
-    </div>
-  )
-}
+import { useState } from 'react';
 
 function App() {
-  const queryParams = new URLSearchParams(window.location.search);
-  const flag = queryParams.get('flag') === 'true'; // trueならアラート、falseならカードを表示
+  const [count, setCount] = useState(0);
+  const countUp = () => {
+    setCount(count + 1);
+  }
+  const countInit = () => {
+    setCount(0);
+  }
 
   return (
     <div className="App">
       <h1>React Sample</h1>
       <header className="container">
-        { flag ?
-          <Alert title="アラート" content="1つ目のメッセージ"/>
-          :
-          <Card title="カード" content="別のメッセージを表示"/>
-        }
+        <div className='card'>
+          <h3>数字をカウント</h3>
+          <p>{"count: "+count}</p>
+          <button onClick={countUp}>Count</button>
+          <button onClick={countInit}>Reset</button>
+        </div>
       </header>
     </div>
   );
