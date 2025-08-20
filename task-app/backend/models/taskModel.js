@@ -8,10 +8,10 @@ async function createTask({ userId, description, deadline}) {
     db = getDB();
     try{
         // Taskを挿入するSQLクエリ
-        const query = `INSERT INTO Tasks(
-        userId, description, deadline
-        )
-        VALUES (?, ?, ?)`;
+        const query = `INSERT INTO Tasks
+            (userId, description, deadline)
+            VALUES (?, ?, ?)
+        `;
         // クエリを実行してタスクを追加
         return await db.run(query, userId, description, deadline);
     } catch (err){
@@ -65,7 +65,11 @@ async function updateTaskByTaskId({taskId, description, deadline}) {
             WHERE taskId = ?
         `;
         // クエリを実行してタスクを更新
-        return await db.run(query, description, deadline, taskId);
+        // return await db.run(query, description, deadline, taskId);
+        const result = await db.run(query, description, deadline, taskId);
+        console.log(result);
+        return result;
+
     } catch (err){
         console.error(err);
     }
@@ -75,7 +79,7 @@ async function updateTaskByTaskId({taskId, description, deadline}) {
 async function updateStatusByTaskId({taskId, status}) {
     const db = getDB();
     try{
-        // updateTimeを更新するクエリ
+        // statusを更新するクエリ
         const query = `
             UPDATE Tasks
             SET status = ?,
@@ -83,7 +87,10 @@ async function updateStatusByTaskId({taskId, status}) {
             WHERE taskId = ?
         `;
         // クエリを実行してタスクを更新
-        return await db.run(query, status, taskId);
+        // return await db.run(query, status, taskId);
+        const result = await db.run(query, status, taskId);
+        console.log(result);
+        return result;
     } catch (err){
         console.error(err);
     }

@@ -3,6 +3,7 @@
 */
 const sqlite3 = require('sqlite3');
 const { open } = require('sqlite');
+const path = require('path');
 
 // 接続インスタンスを保持
 let db;
@@ -11,14 +12,18 @@ let db;
 async function initDB() {
     // DBに接続
     db = await open({
-        filename: './db.sqlite',
+        filename: path.join(__dirname, 'db.sqlite'),
         driver: sqlite3.Database
     });
 
     // 必要に応じてテーブル作成
+    /*
+        CURRENT_TIMESTAMPはデフォルトだとイギリス時間を記録
+        いつか直す
+    */
     // `Users`テーブル
     await db.run(`
-        CREATE TABLE IF NOT EXIST Users(
+        CREATE TABLE IF NOT EXISTS Users(
         userId INTEGER PRIMARY KEY,
         username TEXT NOT NULL,
         email TEXT UNIQUE NOT NULL,
@@ -28,7 +33,7 @@ async function initDB() {
     );
     // `Tasks`テーブル
     await db.run(`
-        CREATE TABLE IF NOT EXIST Tasks(
+        CREATE TABLE IF NOT EXISTS Tasks(
         taskId INTEGER PRIMARY KEY,
         userId INTEGER,
         description TEXT,

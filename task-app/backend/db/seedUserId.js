@@ -4,7 +4,6 @@
 const { initDB } = require('./indexDB');
 
 // 即時実行関数でdbに接続
-// テーブルを作成
 (async () => {
     // dbに接続
     const db = await initDB();
@@ -21,9 +20,11 @@ const { initDB } = require('./indexDB');
         await db.run(query, ['user2', 'user2@mail', 'password2']);
         await db.run(query, ['user3', 'user3@mail', 'password3']);
         await db.run(query, ['user4', 'user4@mail', 'password4']);
+        console.log('Seeding complete');
 
+    } else{
+        console.error('User data already exists.')
     }
 
-    console.log('Seeding complete');
 
 })();

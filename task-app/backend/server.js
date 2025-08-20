@@ -1,6 +1,7 @@
 const express = require('express');
 const session = require('express-session');
 const path = require('path');
+const { initDB } = require('./db/indexDB');
 
 const app = express();
 const PORT = 5000;
@@ -24,7 +25,7 @@ app.use(session({
 //Reactの静的ファイルの提供
 app.use(express.static(path.join(__dirname, '../frontend/build')));
 
-app.get('*', (req, res) => {
+app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
 });
 
@@ -42,6 +43,13 @@ function isLoggedIn(req, res, next){
     res.status(401).json({ error: 'Unauthorized' }); // 存在しない場合は401エラーを返す
 }
 
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+// DB初期設定・サーバー起動
+initDB().then(() => {
+    console.log(`DB initialized`);
+
+    app.listen(PORT, () => {
+        console.log(`Server is running on http://localhost:${PORT}`);
+    });
+}).catch(error => {
+    console.error(`DB initialized failed: `, error);
 });

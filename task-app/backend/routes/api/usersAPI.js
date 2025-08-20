@@ -11,8 +11,7 @@ router.post('/login', async(req, res) => {
     const {email, password} = req.body;
     try{
         // Emailと一致するユーザーを検索
-        const user = await User.getUserByEmail({email: email});
-
+        const user = await User.findUserByEmail({email: email});
         // passwordが一致するか確認
         if(password === user.password){
             // 一致する場合、セッションにuserIdを保存
@@ -23,7 +22,7 @@ router.post('/login', async(req, res) => {
             res.status(400).json({error: 'メールアドレス, またはパスワードが間違っています'});
         }
     } catch (err){
-        res.status(500).json({error: 'ログインに失敗しました'})
+        res.status(500).json({error: 'ログインに失敗しました: ', err});
     }
 });
 
