@@ -5,9 +5,8 @@ const { getDB } = require('../db/indexDB');
 const crypto = require('crypto');
 const bcrypt = require('bcrypt');
 
-function ToHashPassword (password){
-    const salt = bcrypt.genSalt(10);
-    return hashPassword = bcrypt.hash(password, salt);
+async function ToHashPassword (password){
+    return await bcrypt.hash(password, 10);
 }
 
 // emailからユーザーを検索
@@ -23,6 +22,7 @@ async function findUserByEmail({email}) {
         return await db.get(query, email);
     } catch (err){
         console.error(err);
+        throw err;
     }
 }
 
@@ -38,6 +38,7 @@ async function getUserByUserId({userId}) {
         return await db.get(query, userId);
     } catch (err){
         console.error(err);
+        throw err;
     }
 }
 
@@ -54,11 +55,13 @@ async function registerUser({username, email, password}) {
         // UUIDを生成し、userIdとして格納
         const userId = crypto.randomUUID();
         // パスワードをハッシュ化
-        const hashPassword = ToHashPassword(password);
+        const hashPassword = await ToHashPassword(password);
         // クエリを実行してユーザーを登録
         return await db.run(query,userId, username, email, hashPassword);
     } catch (err){
         console.error(err);
+        throw err;
     }
 }
-module.exports = { findUserByEmail, getUserByUserId };
+
+module.exports = { findUserByEmail, getUserByUserId, registerUser, ToHashPassword };

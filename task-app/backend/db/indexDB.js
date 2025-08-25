@@ -24,7 +24,7 @@ async function initDB() {
     // `Users`テーブル
     await db.run(`
         CREATE TABLE IF NOT EXISTS Users(
-        userId INTEGER PRIMARY KEY,
+        userId TEXT PRIMARY KEY,
         username TEXT NOT NULL,
         email TEXT UNIQUE NOT NULL,
         password TEXT NOT NULL,
@@ -35,7 +35,7 @@ async function initDB() {
     await db.run(`
         CREATE TABLE IF NOT EXISTS Tasks(
         taskId INTEGER PRIMARY KEY,
-        userId INTEGER,
+        userId TEXT,
         description TEXT,
         deadline DATETIME,
         status TEXT CHECK(status IN ('pending', 'in_progress', 'completed', 'canceled'))
